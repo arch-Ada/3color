@@ -1,0 +1,26 @@
+# Web and discovery worker using an externally managed PostgreSQL database.
+services:
+  web:
+    build: .
+    restart: unless-stopped
+    ports:
+      - '${THREECOLOR_BIND_ADDRESS:-127.0.0.1}:${THREECOLOR_PORT:-18380}:18380'
+    environment: &database
+      THREECOLOR_ROLE: web
+      THREECOLOR_SUPPLY_ENABLED: 'true'
+      THREECOLOR_DB_URL: ${THREECOLOR_DB_URL:?Set the PostgreSQL JDBC URL}
+      THREECOLOR_DB_USER: ${THREECOLOR_DB_USER:?Set the database user}
+      THREECOLOR_DB_PASSWORD: ${THREECOLOR_DB_PASSWORD:?Set the database password}
+    mem_limit: ${THREECOLOR_WEB_MEMORY:-1g}
+    stop_grace_period: 30s
+  worker:
+    build: .
+    restart: unless-stopped
+    environment:
+      <<: *database
+      THREECOLOR_ROLE: worker
+      THREECOLOR_WORKER_TARGET_PER_CELL: ${THREECOLOR_WORKER_TARGET_PER_CELL:-0}
+      THREECOLOR_WORKER_INTERVAL_SECONDS: ${THREECOLOR_WORKER_INTERVAL_SECONDS:-10}
+    cpus: ${THREECOLOR_WORKER_CPUS:-0.5}
+    mem_limit: ${THREECOLOR_WORKER_MEMORY:-1g}
+    stop_grace_period: 30s

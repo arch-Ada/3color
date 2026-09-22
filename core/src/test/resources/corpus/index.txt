@@ -1,0 +1,11 @@
+trivial/one-node.properties
+unsatisfiable/k4.properties
+multiple-solutions/triangle.properties
+unique/anchored-triangle.properties
+pathological/crossing.properties
+historical-bugs/conflicting-givens.properties
+very-easy/seed-42.properties
+easy/seed-0.properties
+medium/seed-6.properties
+hard/seed-13.properties
+expert/seed-0.properties

@@ -1,0 +1,25 @@
+.git
+.gradle
+**/build
+web/node_modules
+web/dist
+web/test-results
+web/playwright-report
+*.log
+
+.env
+.env.*
+!.env.example
+
+research-private/
+
+web/demo-data
+web/.demo-export-*
+web/dist-demo
+
+# Local release tools are not part of the server image.
+api/src/demo/
+web/demo-tests/
+web/playwright.demo.config.ts
+web/scripts/
+docs/DEMO.md

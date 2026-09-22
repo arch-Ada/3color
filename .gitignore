@@ -1,0 +1,31 @@
+.gradle/
+**/build/
+web/node_modules/
+web/dist/
+web/test-results/
+web/playwright-report/
+.jqwik-database
+*.log
+.DS_Store
+
+__pycache__/
+*.pyc
+
+.env
+.env.*
+!.env.example
+
+# Local research archive; backed up separately.
+/research-private/
+
+# Generated standalone demo snapshots and builds.
+web/demo-data/
+web/.demo-export-*/
+web/dist-demo/
+
+# Local itch.io export, packaging and review tools.
+/api/src/demo/
+/web/demo-tests/
+/web/playwright.demo.config.ts
+/web/scripts/
+/docs/DEMO.md
